@@ -1,5 +1,28 @@
 h1 {
-  color: #369;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 250%;
+  margin-bottom: 30px;
+}
+
+label {
+  font-size: 1.2em;
+}
+
+.time {
+  font-size: 1.5em;
+}
+
+.first {
+  display: none;
+}
+
+.next {
+  font-size: 1.7em;
+  margin-bottom: -25px;
+}
+
+.timer {
+  font-size: 1.7em;
+}
+
+button {
+  margin-top: 3px;
 }
