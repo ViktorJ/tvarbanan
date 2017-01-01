@@ -1,0 +1,80 @@
+<div class="container text-center">
+
+  <div class="container">
+    <h1>PolystarExpress</h1>
+  </div>
+
+  <div class="container">
+      <h3>Turer mellan Mårtensdal och Gullmarsplan</h3>
+  </div>
+
+  <div class="container">
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+      <h2>Avgår</h2>
+      <div class="panel panel-default">
+        <div class="panel-body next" *ngFor="let dep of departures; let first = first">
+          <div *ngIf="first">{{ dep.time | slice:0:5 }}</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+      <h2>Ankommer</h2>
+      <div class="panel panel-default">
+        <div class="panel-body next" *ngFor="let arr of arrivals; let first = first">
+          <div *ngIf="first">{{ arr.time | slice:0:5 }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h3>Senare avgångar</h3>
+  </div>
+
+  <div class="container">
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+      <label>Avgång Mårtensdal</label>
+      <ul class="list-group">
+        <li *ngFor="let dep of departures; let first = first" [ngClass]="{ first: first }" class="list-group-item">
+          <div *ngIf="!first" class="time">{{ dep.time | slice:0:5 }}</div>
+        </li>
+      </ul>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+      <label>Ankomst Gullmarsplan</label>
+      <ul class="list-group">
+        <li *ngFor="let arr of arrivals; let first = first" [ngClass]="{ first: first }" class="list-group-item">
+          <div *ngIf="!first" class="time">{{ arr.time | slice:0:5 }}</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container">
+    <h3>Annan Destination</h3>
+  </div>
+
+  <div class="container">
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"></div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+      <form #f="ngForm" class="form-group">
+        <input #term type="text" class="form-control" (keyup)="search(term.value)">
+        <button class="btn btn-default" (click)="calcTrip(destination.id)">Sök</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
+    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let trip of customTrip">
+          <div>{{ trip.Origin.time | slice:0:5 }} {{ trip.Origin.name }} <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> {{ trip.Destination.time | slice:0:5 }} {{ trip.Destination.name }}</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</div>
